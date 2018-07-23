@@ -35,14 +35,28 @@ public class MainActivity extends AppCompatActivity {
             editSegundoTime.setError("Informe o nome do segundo time");
             return false;
         }
+        if (editSegundoTime.getText().toString().equals(editPrimeiroTime.getText().toString())) {
+            editPrimeiroTime.setError("Nomes dos times estão iguais");
+            editSegundoTime.setError("Nomes dos times estão iguais");
+            return false;
+        }
+
         if (editTempoPartida.getText().toString().isEmpty()){
             editTempoPartida.setError("Informe o tempo da partida");
+            return false;
+        }
+
+        if (Integer.parseInt(editTempoPartida.getText().toString()) > 90) {
+            editTempoPartida.setError("tempo máximo de partida é 90");
             return false;
         }
         return true;
     }
 
     public void iniciarPartida(View view){
+
+        if (!validaCampos()) return;
+
         String configuracaoPartida[] = {editPrimeiroTime.getText().toString(),
                 editSegundoTime.getText().toString(),
                 editTempoPartida.getText().toString()};

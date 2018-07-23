@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Pelota</string>
+    <string name="partida_gol">Gol</string>
+    <string name="partida_faltas">Faltas</string>
+    <string name="partida_zero">0</string>
+    <string name="partida_escanteio">Escanteio</string>
+    <string name="partida_amarelo">Amarelo</string>
+    <string name="partida_vermelho">Vermelho</string>
 </resources>
