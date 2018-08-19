@@ -1,9 +1,9 @@
 package br.com.juliorgm.pelota;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -63,7 +63,7 @@ public class PartidaActivity extends AppCompatActivity {
         textNomeTime1.setText(configuracoes[0]);
         textNomeTime2.setText(configuracoes[1]);
 
-        int tempo = Integer.parseInt(configuracoes[2].toString());
+        int tempo = Integer.parseInt(configuracoes[2]);
 
         try {
             rolaABolaTempo(60 * 1000 * tempo);
@@ -79,7 +79,8 @@ public class PartidaActivity extends AppCompatActivity {
             public void onTick(long millisUntilFinished) {
                 int minutos = (int) (millisUntilFinished/1000/60);
                 int segundos = (int)(millisUntilFinished-(minutos*60*1000))/1000;
-                textCronomtro.setText("Tempo " + minutos + ":" + segundos) ;
+                String tempo = "Tempo " + minutos + ":" + segundos;
+                textCronomtro.setText(tempo);
             }
 
             @Override
@@ -97,16 +98,14 @@ public class PartidaActivity extends AppCompatActivity {
 
 
     public void finalizaPartida(View view){
-        finalizarPartida();
+        contador.onFinish();
     }
 
 
     public void finalizarPartida() {
-        Toast.makeText(this,"Partida Finalizada",Toast.LENGTH_LONG);
+        Toast.makeText(this, "Partida Finalizada", Toast.LENGTH_LONG).show();
 
         btNovaPartida.setVisibility(View.VISIBLE);
-
-        contador.onFinish();
         contador.cancel();
         verificaResultado();
         statusPartida = false;
@@ -115,11 +114,16 @@ public class PartidaActivity extends AppCompatActivity {
     public void verificaResultado(){
         int golsTime1 = Integer.parseInt(textGolTime1.getText().toString());
         int golsTime2 = Integer.parseInt(textGolTime2.getText().toString());
+        String resultado = "";
+
         if (golsTime1 > golsTime2)
-            textCronomtro.setText(textNomeTime1.getText().toString() + " Venceu");
+            resultado = textNomeTime1.getText().toString() + R.string.partida_vence;
         if (golsTime1 < golsTime2)
-            textCronomtro.setText(textNomeTime2.getText().toString() + " Venceu");
-        if (golsTime1==golsTime2) textCronomtro.setText("Empate");// aqui podemos implementar um cara ou coroa
+            resultado = textNomeTime2.getText().toString() + R.string.partida_vence;
+        if (golsTime1 == golsTime2)
+            resultado = "Empate!";
+
+        textCronomtro.setText(resultado);// aqui podemos implementar um cara ou coroa
     }
 
     public void terminarPartida(View view){

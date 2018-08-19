@@ -6,4 +6,15 @@
     <string name="partida_escanteio">Escanteio</string>
     <string name="partida_amarelo">Amarelo</string>
     <string name="partida_vermelho">Vermelho</string>
+    <string name="main_configure">Configure seu jogo</string>
+    <string name="main_time1">Nome do primeiro time</string>
+    <string name="main_time2">Nome do segundo time</string>
+    <string name="main_tempo">Informe o temp da partida</string>
+    <string name="main_inicio">Iniciar Partida</string>
+    <string name="partida_fim">Finalizar Partida</string>
+    <string name="main_background">Imagem de fundo</string>
+    <string name="partida_nova">Nova Partida</string>
+    <string name="partida_vence"> Venceu! </string>
+    <string name="partida_empate"> Empate! </string>
+    <string name="partida_cronometro"> </string>
 </resources>
